@@ -8,4 +8,17 @@ def create_summary_table(df):
     Returns:
         pd.DataFrame: A summary DataFrame.
     """
-    pass  # Implement the logic here
+    summary_data = {
+        'Feature Name': [],
+        'Data Type': [],
+        'Has Missing Values?': [],
+        'Number of Unique Values': []
+    }
+    
+    for column in df.columns:
+        summary_data['Feature Name'].append(column)
+        summary_data['Data Type'].append(str(df[column].dtype))
+        summary_data['Has Missing Values?'].append(df[column].isnull().any())
+        summary_data['Number of Unique Values'].append(df[column].nunique())
+    
+    return pd.DataFrame(summary_data)

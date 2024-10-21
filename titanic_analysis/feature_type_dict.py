@@ -10,12 +10,30 @@ def create_feature_type_dict(df):
     """
     feature_types = {
         'numerical': {
-            'continuous': [],  # Fill with continuous numerical features
-            'discrete': []  # Fill with discrete numerical features
+            'continuous': [],
+            'discrete': []
         },
         'categorical': {
-            'nominal': [],  # Fill with nominal categorical features
-            'ordinal': []  # Fill with ordinal categorical features
+            'nominal': [],
+            'ordinal': []
         }
     }
+    
+    # Example list of known ordinal features
+    ordinal_features = ['Fare', 'Class']  # Adjust as necessary based on your dataset
+
+    for column in df.columns:
+        if pd.api.types.is_numeric_dtype(df[column]):
+            # Classify numerical features
+            if df[column].nunique() > 10:  # Example threshold for continuous
+                feature_types['numerical']['continuous'].append(column)
+            else:
+                feature_types['numerical']['discrete'].append(column)
+        elif isinstance(df[column].dtype, pd.CategoricalDtype) or df[column].dtype == 'object':
+            # Classify categorical features
+            if column in ordinal_features:
+                feature_types['categorical']['ordinal'].append(column)
+            else:
+                feature_types['categorical']['nominal'].append(column)  # Default to nominal
+
     return feature_types
