@@ -1,3 +1,7 @@
+import sys
+import os
+# Add the parent directory of titanic_analysis to sys.path
+sys.path.append(os.path.abspath('../'))  # Adjust this based on the relative path to titanic_analysis
 import pandas as pd
 from titanic_analysis.data_loader import load_titanic_data
 

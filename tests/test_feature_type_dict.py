@@ -1,3 +1,8 @@
+import sys
+import os
+# Add the parent directory of titanic_analysis to sys.path
+sys.path.append(os.path.abspath('../'))  # Adjust this based on the relative path to titanic_analysis
+
 from titanic_analysis.feature_type_dict import create_feature_type_dict
 import pandas as pd
 def test_create_feature_type_dict():

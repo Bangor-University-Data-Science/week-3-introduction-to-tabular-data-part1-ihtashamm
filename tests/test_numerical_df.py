@@ -1,3 +1,7 @@
+import sys
+import os
+# Add the parent directory of titanic_analysis to sys.path
+sys.path.append(os.path.abspath('../'))  # Adjust this based on the relative path to titanic_analysis
 from titanic_analysis.numerical_df import get_numerical_df
 import pandas as pd
 def test_get_numerical_df():
