@@ -1,3 +1,5 @@
+import pandas as pd
+
 def create_feature_type_dict(df):
     """
     Classifies features into numerical (continuous or discrete) and categorical (nominal or ordinal).

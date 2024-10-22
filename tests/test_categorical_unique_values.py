@@ -1,7 +1,3 @@
-import sys
-import os
-# Add the parent directory of titanic_analysis to sys.path
-sys.path.append(os.path.abspath('../'))  # Adjust this based on the relative path to titanic_analysis
 from titanic_analysis.categorical_unique_values import display_unique_values
 import pandas as pd
 def test_display_unique_values():
@@ -13,7 +9,6 @@ def test_display_unique_values():
     categorical_features = ['Sex', 'Embarked']
     
     unique_values = display_unique_values(mock_df, categorical_features)
-
     
     assert isinstance(unique_values, dict), "The result should be a dictionary"
     assert 'Sex' in unique_values and 'Embarked' in unique_values, "Both categorical features should be in the result"
